@@ -1,0 +1,6 @@
+@extends('layouts.admin')
+@section('title','Form Merchandise')
+@section('content')
+<h1 class="section-title">{{ $item->exists ? 'Edit' : 'Tambah' }} Merchandise</h1><form class="card card-soft p-4" method="post" action="{{ $item->exists ? route('admin.merchandise.update',$item) : route('admin.merchandise.store') }}">@csrf @if($item->exists) @method('PUT') @endif
+<div class="row g-3"><div class="col-md-6"><label>Nama Produk</label><input name="nama_produk" value="{{ old('nama_produk',$item->nama_produk) }}" class="form-control" required></div><div class="col-md-6"><label>Kategori</label><input name="kategori" value="{{ old('kategori',$item->kategori) }}" class="form-control"></div><div class="col-md-4"><label>Harga</label><input name="harga" type="number" value="{{ old('harga',$item->harga) }}" class="form-control" required></div><div class="col-md-4"><label>Stok</label><input name="stok" type="number" value="{{ old('stok',$item->stok ?? 0) }}" class="form-control" required></div><div class="col-md-4"><label>Kontribusi Konservasi (%)</label><input name="kontribusi" type="number" value="{{ old('kontribusi',$item->kontribusi ?? 10) }}" class="form-control" required></div><input type="hidden" name="jumlah_terjual" value="{{ $item->jumlah_terjual ?? 0 }}"></div><button class="btn btn-forest mt-4">Simpan</button></form>
+@endsection

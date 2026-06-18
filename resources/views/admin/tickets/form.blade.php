@@ -1,0 +1,6 @@
+@extends('layouts.admin')
+@section('title','Form Tiket')
+@section('content')
+<h1 class="section-title">{{ $item->exists ? 'Edit' : 'Tambah' }} Tiket</h1><form class="card card-soft p-4" method="post" action="{{ $item->exists ? route('admin.tickets.update',$item) : route('admin.tickets.store') }}">@csrf @if($item->exists) @method('PUT') @endif
+<div class="row g-3"><div class="col-md-6"><label>Jenis Tiket</label><input name="jenis_tiket" value="{{ old('jenis_tiket',$item->jenis_tiket) }}" class="form-control" required></div><div class="col-md-6"><label>Kategori</label><input name="kategori" value="{{ old('kategori',$item->kategori) }}" class="form-control"></div><div class="col-md-4"><label>Harga</label><input name="harga" type="number" value="{{ old('harga',$item->harga) }}" class="form-control" required></div><div class="col-md-4"><label>Kapasitas Harian</label><input name="kapasitas_harian" type="number" value="{{ old('kapasitas_harian',$item->kapasitas_harian ?? 500) }}" class="form-control" required></div><div class="col-md-4"><label>Aktif</label><select name="aktif" class="form-select"><option value="1">Ya</option><option value="0">Tidak</option></select></div></div><button class="btn btn-forest mt-4">Simpan</button></form>
+@endsection

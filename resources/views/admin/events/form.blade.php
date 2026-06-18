@@ -1,0 +1,6 @@
+@extends('layouts.admin')
+@section('title','Form Event Promo')
+@section('content')
+<h1 class="section-title">{{ $item->exists ? 'Edit' : 'Tambah' }} Event & Promo</h1><form class="card card-soft p-4" method="post" action="{{ $item->exists ? route('admin.events.update',$item) : route('admin.events.store') }}">@csrf @if($item->exists) @method('PUT') @endif
+<div class="row g-3"><div class="col-md-6"><label>Nama Event</label><input name="nama_event" value="{{ old('nama_event',$item->nama_event) }}" class="form-control" required></div><div class="col-md-3"><label>Tanggal Mulai</label><input name="tanggal_mulai" type="date" value="{{ old('tanggal_mulai',$item->tanggal_mulai) }}" class="form-control" required></div><div class="col-md-3"><label>Tanggal Selesai</label><input name="tanggal_selesai" type="date" value="{{ old('tanggal_selesai',$item->tanggal_selesai) }}" class="form-control" required></div><div class="col-md-4"><label>Diskon (%)</label><input name="diskon_persen" type="number" value="{{ old('diskon_persen',$item->diskon_persen ?? 0) }}" class="form-control" required></div><div class="col-md-8"><label>Deskripsi</label><input name="deskripsi" value="{{ old('deskripsi',$item->deskripsi) }}" class="form-control"></div></div><input type="hidden" name="aktif" value="1"><button class="btn btn-forest mt-4">Simpan</button></form>
+@endsection
