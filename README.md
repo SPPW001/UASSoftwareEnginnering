@@ -1,5 +1,6 @@
 # ZooLand ERP - Laravel Starter
 
+Setyo Pratama 240605110090 & Sarafina Saquita 240605110145
 Starter project Laravel untuk **ZooLand ERP - Ekowisata Terukur** sesuai revisi final:
 
 Alur utama:
